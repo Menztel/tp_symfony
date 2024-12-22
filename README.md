@@ -60,15 +60,15 @@ Use the following credentials to log in based on your role:
 
 - **Admin**:
   - Email: admin@example.com
-  - Password: adminpassword
+  - Password: admin123
 
 - **Teacher**:
-  - Email: prof_[subject]@example.com (e.g., prof_maths@example.com)
-  - Password: profpassword
+  - Email: [math|physics|chemistry|biology|french].teacher@example.com
+  - Password: teacher123
 
 - **Student**:
-  - Email: student[1-10]@example.com (e.g., student1@example.com)
-  - Password: studentpassword
+  - Email: terry.clint@example.com
+  - Password: student123
 
 ## Development
 
