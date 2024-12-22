@@ -1,0 +1,117 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Mon Profil{% endblock %}
+
+{% block body %}
+<div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-10">
+    <!-- Page header -->
+    <div class="mb-8">
+        <div class="md:flex md:items-center md:justify-between">
+            <div class="min-w-0 flex-1">
+                <h2 class="text-2xl font-bold leading-7 text-gray-900 sm:text-3xl sm:tracking-tight">Mon Profil</h2>
+            </div>
+        </div>
+    </div>
+
+    {% for message in app.flashes('success') %}
+        <div class="rounded-md bg-green-50 p-4 mb-6">
+            <div class="flex">
+                <div class="flex-shrink-0">
+                    <i class="fas fa-check-circle text-green-400"></i>
+                </div>
+                <div class="ml-3">
+                    <p class="text-sm font-medium text-green-800">{{ message }}</p>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+
+    <div class="grid grid-cols-1 gap-8 md:grid-cols-3">
+        <!-- Profile Info -->
+        <div class="md:col-span-2">
+            <div class="bg-white shadow sm:rounded-lg overflow-hidden">
+                <div class="px-4 py-5 sm:p-6">
+                    {{ form_start(form, {'attr': {'class': 'space-y-6'}}) }}
+                        <div class="grid grid-cols-1 gap-6 sm:grid-cols-2">
+                            <div>
+                                {{ form_label(form.firstName, null, {'label_attr': {'class': 'block text-sm font-medium leading-6 text-gray-900'}}) }}
+                                {{ form_widget(form.firstName) }}
+                                {{ form_errors(form.firstName) }}
+                            </div>
+
+                            <div>
+                                {{ form_label(form.lastName, null, {'label_attr': {'class': 'block text-sm font-medium leading-6 text-gray-900'}}) }}
+                                {{ form_widget(form.lastName) }}
+                                {{ form_errors(form.lastName) }}
+                            </div>
+
+                            <div class="sm:col-span-2">
+                                {{ form_label(form.email, null, {'label_attr': {'class': 'block text-sm font-medium leading-6 text-gray-900'}}) }}
+                                {{ form_widget(form.email) }}
+                                {{ form_errors(form.email) }}
+                            </div>
+                        </div>
+
+                        <div class="flex justify-end">
+                            <button type="submit" class="ml-3 inline-flex justify-center rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
+                                Sauvegarder les modifications
+                            </button>
+                        </div>
+                    {{ form_end(form) }}
+                </div>
+            </div>
+        </div>
+
+        <!-- Stats and Role -->
+        <div>
+            <!-- Role Card -->
+            <div class="bg-white shadow sm:rounded-lg overflow-hidden mb-6">
+                <div class="px-4 py-5 sm:p-6">
+                    <h3 class="text-base font-semibold leading-7 text-gray-900 mb-4">Rôle</h3>
+                    {% if 'ROLE_ADMIN' in user.roles %}
+                        <div class="inline-flex items-center rounded-md bg-purple-50 px-3 py-2 text-sm font-medium text-purple-700 ring-1 ring-inset ring-purple-700/10">
+                            <i class="fas fa-user-shield mr-2"></i> Administrateur
+                        </div>
+                    {% elseif 'ROLE_TEACHER' in user.roles %}
+                        <div class="inline-flex items-center rounded-md bg-blue-50 px-3 py-2 text-sm font-medium text-blue-700 ring-1 ring-inset ring-blue-700/10">
+                            <i class="fas fa-chalkboard-teacher mr-2"></i> Professeur
+                        </div>
+                    {% else %}
+                        <div class="inline-flex items-center rounded-md bg-green-50 px-3 py-2 text-sm font-medium text-green-700 ring-1 ring-inset ring-green-700/10">
+                            <i class="fas fa-user-graduate mr-2"></i> Étudiant
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+
+            <!-- Stats Card -->
+            <div class="bg-white shadow sm:rounded-lg overflow-hidden">
+                <div class="px-4 py-5 sm:p-6">
+                    <h3 class="text-base font-semibold leading-7 text-gray-900 mb-4">Statistiques</h3>
+                    {% if 'ROLE_TEACHER' in user.roles %}
+                        <div class="flex items-baseline">
+                            <div class="flex-1">
+                                <p class="text-sm font-medium text-gray-600">Matières enseignées</p>
+                                <p class="mt-1 text-3xl font-semibold text-gray-900">{{ user.teacherSubjects|length }}</p>
+                            </div>
+                            <div class="text-3xl text-gray-400">
+                                <i class="fas fa-book"></i>
+                            </div>
+                        </div>
+                    {% else %}
+                        <div class="flex items-baseline">
+                            <div class="flex-1">
+                                <p class="text-sm font-medium text-gray-600">Exercices complétés</p>
+                                <p class="mt-1 text-3xl font-semibold text-gray-900">0</p>
+                            </div>
+                            <div class="text-3xl text-gray-400">
+                                <i class="fas fa-check-circle"></i>
+                            </div>
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

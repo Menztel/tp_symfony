@@ -1,17 +1,118 @@
 <!DOCTYPE html>
-<html>
+<html class="h-full bg-slate-50">
     <head>
         <meta charset="UTF-8">
-        <title>{% block title %}Welcome{% endblock %}</title>
-        {% block stylesheets %}
-            <link rel="stylesheet" href="{{ asset('styles/app.css') }}">
-        {% endblock %}
-
-        {% block javascripts %}
-            {% block importmap %}{{ importmap('app') }}{% endblock %}
-        {% endblock %}
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>{% block title %}Welcome!{% endblock %}</title>
+        <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text></svg>">
+        <!-- Tailwind CSS -->
+        <script src="https://cdn.tailwindcss.com"></script>
+        <!-- Font Awesome -->
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+        <!-- Google Fonts -->
+        <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+        <style>
+            body {
+                font-family: 'Plus Jakarta Sans', sans-serif;
+            }
+        </style>
+        {% block stylesheets %}{% endblock %}
     </head>
-    <body>
-        {% block body %}{% endblock %}
+    <body class="h-full">
+        <nav class="bg-white/80 backdrop-blur-md border-b border-slate-200 sticky top-0 z-50">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex justify-between h-16">
+                    <div class="flex">
+                        <div class="flex-shrink-0 flex items-center">
+                            <a href="{{ path('app_home') }}" class="text-xl font-bold bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent hover:from-blue-500 hover:to-indigo-500 transition-all">
+                                <i class="fas fa-graduation-cap mr-2"></i>TP Symfony
+                            </a>
+                        </div>
+                        <div class="hidden sm:ml-6 sm:flex sm:space-x-8">
+                            <a href="{{ path('app_subject_index') }}" class="inline-flex items-center px-1 pt-1 text-sm font-medium text-slate-700 hover:text-blue-600 hover:border-b-2 hover:border-blue-500 transition-all">
+                                <i class="fas fa-book mr-2"></i>Matières
+                            </a>
+                            <a href="{{ path('app_chapter_index') }}" class="inline-flex items-center px-1 pt-1 text-sm font-medium text-slate-700 hover:text-blue-600 hover:border-b-2 hover:border-blue-500 transition-all">
+                                <i class="fas fa-list-ul mr-2"></i>Chapitres
+                            </a>
+                            <a href="{{ path('app_exercise_index') }}" class="inline-flex items-center px-1 pt-1 text-sm font-medium text-slate-700 hover:text-blue-600 hover:border-b-2 hover:border-blue-500 transition-all">
+                                <i class="fas fa-tasks mr-2"></i>Exercices
+                            </a>
+                        </div>
+                    </div>
+                    <div class="hidden sm:ml-6 sm:flex sm:items-center">
+                        {% if app.user %}
+                            <div class="relative ml-3 flex items-center space-x-4">
+                                <a href="{{ path('app_profile') }}" class="text-sm font-medium text-slate-700 hover:text-blue-600 transition-all">
+                                    <i class="fas fa-user-circle mr-2"></i>{{ app.user.firstName }}
+                                </a>
+                                <a href="{{ path('app_logout') }}" class="inline-flex items-center px-4 py-2 border border-slate-300 rounded-full text-sm font-medium text-slate-700 bg-white hover:bg-slate-50 hover:border-slate-400 transition-all">
+                                    <i class="fas fa-sign-out-alt mr-2"></i>Déconnexion
+                                </a>
+                            </div>
+                        {% else %}
+                            <div class="relative ml-3 flex items-center space-x-4">
+                                <a href="{{ path('app_login') }}" class="inline-flex items-center px-4 py-2 rounded-full text-sm font-medium text-white bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 transition-all shadow-sm hover:shadow-md">
+                                    <i class="fas fa-sign-in-alt mr-2"></i>Connexion
+                                </a>
+                                <a href="{{ path('app_register') }}" class="inline-flex items-center px-4 py-2 border border-slate-300 rounded-full text-sm font-medium text-slate-700 bg-white hover:bg-slate-50 hover:border-slate-400 transition-all">
+                                    <i class="fas fa-user-plus mr-2"></i>Inscription
+                                </a>
+                            </div>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+
+            <!-- Mobile menu -->
+            <div class="sm:hidden" id="mobile-menu">
+                <div class="pt-2 pb-3 space-y-1">
+                    <a href="{{ path('app_subject_index') }}" class="block pl-3 pr-4 py-2 text-base font-medium text-slate-700 hover:text-blue-600 hover:bg-slate-50">
+                        <i class="fas fa-book mr-2"></i>Matières
+                    </a>
+                    <a href="{{ path('app_chapter_index') }}" class="block pl-3 pr-4 py-2 text-base font-medium text-slate-700 hover:text-blue-600 hover:bg-slate-50">
+                        <i class="fas fa-list-ul mr-2"></i>Chapitres
+                    </a>
+                    <a href="{{ path('app_exercise_index') }}" class="block pl-3 pr-4 py-2 text-base font-medium text-slate-700 hover:text-blue-600 hover:bg-slate-50">
+                        <i class="fas fa-tasks mr-2"></i>Exercices
+                    </a>
+                </div>
+            </div>
+        </nav>
+
+        <main>
+            <div class="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
+                {% for label, messages in app.flashes %}
+                    {% for message in messages %}
+                        {% set alertClass = {
+                            'success': 'bg-green-50 text-green-800 border-green-200',
+                            'error': 'bg-red-50 text-red-800 border-red-200',
+                            'warning': 'bg-yellow-50 text-yellow-800 border-yellow-200',
+                            'info': 'bg-blue-50 text-blue-800 border-blue-200'
+                        } %}
+                        <div class="rounded-lg p-4 mb-4 {{ alertClass[label] }} border" role="alert">
+                            <div class="flex">
+                                <div class="flex-shrink-0">
+                                    {% set iconClass = {
+                                        'success': 'text-green-400',
+                                        'error': 'text-red-400',
+                                        'warning': 'text-yellow-400',
+                                        'info': 'text-blue-400'
+                                    } %}
+                                    <i class="fas fa-info-circle {{ iconClass[label] }}"></i>
+                                </div>
+                                <div class="ml-3">
+                                    <p class="text-sm font-medium">{{ message }}</p>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                {% endfor %}
+
+                {% block body %}{% endblock %}
+            </div>
+        </main>
+
+        {% block javascripts %}{% endblock %}
     </body>
 </html>

@@ -1,0 +1,35 @@
+App\Entity\Comment:
+    # Commentaires pour les exercices de mathématiques
+    comment_math_{1..20}:
+        content: <text(50, 200)>
+        exercise: '@exercise_math_*'
+        author: '@user_student_*'
+        createdAt: <dateTimeBetween('-3 months', 'now')>
+
+    # Commentaires pour les exercices de physique
+    comment_physics_{1..20}:
+        content: <text(50, 200)>
+        exercise: '@exercise_physics_*'
+        author: '@user_student_*'
+        createdAt: <dateTimeBetween('-3 months', 'now')>
+
+    # Commentaires pour les exercices de chimie
+    comment_chemistry_{1..20}:
+        content: <text(50, 200)>
+        exercise: '@exercise_chemistry_*'
+        author: '@user_student_*'
+        createdAt: <dateTimeBetween('-3 months', 'now')>
+
+    # Commentaires pour les exercices de biologie
+    comment_biology_{1..20}:
+        content: <text(50, 200)>
+        exercise: '@exercise_biology_*'
+        author: '@user_student_*'
+        createdAt: <dateTimeBetween('-3 months', 'now')>
+
+    # Commentaires pour les exercices de français
+    comment_french_{1..20}:
+        content: <text(50, 200)>
+        exercise: '@exercise_french_*'
+        author: '@user_student_*'
+        createdAt: <dateTimeBetween('-3 months', 'now')>

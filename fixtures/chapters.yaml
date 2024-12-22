@@ -1,0 +1,35 @@
+App\Entity\Chapter:
+    # Chapitres de Mathématiques
+    chapter_math_{1..4}:
+        title: <randomElement(['Algèbre linéaire', 'Géométrie euclidienne', 'Analyse différentielle', 'Probabilités et statistiques'])>
+        content: <paragraph()>
+        subject: '@subject_math'
+        position: <current()>
+
+    # Chapitres de Physique
+    chapter_physics_{1..4}:
+        title: <randomElement(['Mécanique newtonienne', 'Thermodynamique', 'Électromagnétisme', 'Optique'])>
+        content: <paragraph()>
+        subject: '@subject_physics'
+        position: <current()>
+
+    # Chapitres de Chimie
+    chapter_chemistry_{1..4}:
+        title: <randomElement(['Chimie organique', 'Chimie inorganique', 'Équilibres chimiques', 'Cinétique chimique'])>
+        content: <paragraph()>
+        subject: '@subject_chemistry'
+        position: <current()>
+
+    # Chapitres de Biologie
+    chapter_biology_{1..4}:
+        title: <randomElement(['Cellule et métabolisme', 'Génétique', 'Écologie', 'Évolution'])>
+        content: <paragraph()>
+        subject: '@subject_biology'
+        position: <current()>
+
+    # Chapitres de Français
+    chapter_french_{1..4}:
+        title: <randomElement(['Littérature du XIXe siècle', 'Grammaire avancée', 'Dissertation', 'Analyse littéraire'])>
+        content: <paragraph()>
+        subject: '@subject_french'
+        position: <current()>

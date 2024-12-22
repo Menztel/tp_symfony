@@ -1,0 +1,160 @@
+App\Entity\Exercise:
+    # Exercices de Mathématiques - Chapitre 1
+    exercise_math_1_{1..3}:
+        title: 'Exercice <current()> : <randomElement(["Systèmes à 2 équations", "Systèmes à 3 équations", "Méthode de Cramer"])>'
+        description: <text(200)>
+        difficulty: <numberBetween(1, 3)>
+        chapter: '@chapter_math_1'
+        createdAt: <dateTimeBetween('-6 months', 'now')>
+
+    # Exercices de Mathématiques - Chapitre 2
+    exercise_math_2_{1..3}:
+        title: 'Exercice <current()> : <randomElement(["Triangles semblables", "Cercle circonscrit", "Théorème de Pythagore avancé"])>'
+        description: <text(200)>
+        difficulty: <numberBetween(1, 3)>
+        chapter: '@chapter_math_2'
+        createdAt: <dateTimeBetween('-6 months', 'now')>
+
+    # Exercices de Mathématiques - Chapitre 3
+    exercise_math_3_{1..3}:
+        title: 'Exercice <current()> : <randomElement(["Dérivées composées", "Intégrales définies", "Théorème fondamental"])>'
+        description: <text(200)>
+        difficulty: <numberBetween(1, 3)>
+        chapter: '@chapter_math_3'
+        createdAt: <dateTimeBetween('-6 months', 'now')>
+
+    # Exercices de Mathématiques - Chapitre 4
+    exercise_math_4_{1..3}:
+        title: 'Exercice <current()> : <randomElement(["Loi normale", "Test du Chi-deux", "Intervalle de confiance"])>'
+        description: <text(200)>
+        difficulty: <numberBetween(1, 3)>
+        chapter: '@chapter_math_4'
+        createdAt: <dateTimeBetween('-6 months', 'now')>
+
+    # Exercices de Physique - Chapitre 1
+    exercise_physics_1_{1..3}:
+        title: 'Exercice <current()> : <randomElement(["Forces et accélération", "Chute libre", "Plan incliné"])>'
+        description: <text(200)>
+        difficulty: <numberBetween(1, 3)>
+        chapter: '@chapter_physics_1'
+        createdAt: <dateTimeBetween('-6 months', 'now')>
+
+    # Exercices de Physique - Chapitre 2
+    exercise_physics_2_{1..3}:
+        title: 'Exercice <current()> : <randomElement(["Premier principe", "Gaz parfaits", "Cycles thermodynamiques"])>'
+        description: <text(200)>
+        difficulty: <numberBetween(1, 3)>
+        chapter: '@chapter_physics_2'
+        createdAt: <dateTimeBetween('-6 months', 'now')>
+
+    # Exercices de Physique - Chapitre 3
+    exercise_physics_3_{1..3}:
+        title: 'Exercice <current()> : <randomElement(["Loi de Coulomb", "Champ magnétique", "Induction"])>'
+        description: <text(200)>
+        difficulty: <numberBetween(1, 3)>
+        chapter: '@chapter_physics_3'
+        createdAt: <dateTimeBetween('-6 months', 'now')>
+
+    # Exercices de Physique - Chapitre 4
+    exercise_physics_4_{1..3}:
+        title: 'Exercice <current()> : <randomElement(["Lois de Snell-Descartes", "Lentilles minces", "Interférences"])>'
+        description: <text(200)>
+        difficulty: <numberBetween(1, 3)>
+        chapter: '@chapter_physics_4'
+        createdAt: <dateTimeBetween('-6 months', 'now')>
+
+    # Exercices de Chimie - Chapitre 1
+    exercise_chemistry_1_{1..3}:
+        title: 'Exercice <current()> : <randomElement(["Alcanes", "Alcènes", "Alcools"])>'
+        description: <text(200)>
+        difficulty: <numberBetween(1, 3)>
+        chapter: '@chapter_chemistry_1'
+        createdAt: <dateTimeBetween('-6 months', 'now')>
+
+    # Exercices de Chimie - Chapitre 2
+    exercise_chemistry_2_{1..3}:
+        title: 'Exercice <current()> : <randomElement(["Métaux alcalins", "Halogènes", "Métaux de transition"])>'
+        description: <text(200)>
+        difficulty: <numberBetween(1, 3)>
+        chapter: '@chapter_chemistry_2'
+        createdAt: <dateTimeBetween('-6 months', 'now')>
+
+    # Exercices de Chimie - Chapitre 3
+    exercise_chemistry_3_{1..3}:
+        title: 'Exercice <current()> : <randomElement(["Constante d''équilibre", "Principe de Le Chatelier", "pH et pKa"])>'
+        description: <text(200)>
+        difficulty: <numberBetween(1, 3)>
+        chapter: '@chapter_chemistry_3'
+        createdAt: <dateTimeBetween('-6 months', 'now')>
+
+    # Exercices de Chimie - Chapitre 4
+    exercise_chemistry_4_{1..3}:
+        title: 'Exercice <current()> : <randomElement(["Vitesse de réaction", "Ordre de réaction", "Énergie d''activation"])>'
+        description: <text(200)>
+        difficulty: <numberBetween(1, 3)>
+        chapter: '@chapter_chemistry_4'
+        createdAt: <dateTimeBetween('-6 months', 'now')>
+
+    # Exercices de Biologie - Chapitre 1
+    exercise_biology_1_{1..3}:
+        title: 'Exercice <current()> : <randomElement(["Structure cellulaire", "Respiration cellulaire", "Photosynthèse"])>'
+        description: <text(200)>
+        difficulty: <numberBetween(1, 3)>
+        chapter: '@chapter_biology_1'
+        createdAt: <dateTimeBetween('-6 months', 'now')>
+
+    # Exercices de Biologie - Chapitre 2
+    exercise_biology_2_{1..3}:
+        title: 'Exercice <current()> : <randomElement(["ADN et réplication", "Transcription", "Traduction"])>'
+        description: <text(200)>
+        difficulty: <numberBetween(1, 3)>
+        chapter: '@chapter_biology_2'
+        createdAt: <dateTimeBetween('-6 months', 'now')>
+
+    # Exercices de Biologie - Chapitre 3
+    exercise_biology_3_{1..3}:
+        title: 'Exercice <current()> : <randomElement(["Chaînes alimentaires", "Cycles biogéochimiques", "Biodiversité"])>'
+        description: <text(200)>
+        difficulty: <numberBetween(1, 3)>
+        chapter: '@chapter_biology_3'
+        createdAt: <dateTimeBetween('-6 months', 'now')>
+
+    # Exercices de Biologie - Chapitre 4
+    exercise_biology_4_{1..3}:
+        title: 'Exercice <current()> : <randomElement(["Système immunitaire", "Vaccination", "Réponse immunitaire"])>'
+        description: <text(200)>
+        difficulty: <numberBetween(1, 3)>
+        chapter: '@chapter_biology_4'
+        createdAt: <dateTimeBetween('-6 months', 'now')>
+
+    # Exercices de Français - Chapitre 1 (Littérature du XIXe siècle)
+    exercise_french_1_{1..3}:
+        title: 'Exercice <current()> : <randomElement(["Le roman réaliste", "Le mouvement romantique", "Le naturalisme de Zola"])>'
+        description: <text(200)>
+        difficulty: <numberBetween(1, 3)>
+        chapter: '@chapter_french_1'
+        createdAt: <dateTimeBetween('-6 months', 'now')>
+
+    # Exercices de Français - Chapitre 2 (Grammaire avancée)
+    exercise_french_2_{1..3}:
+        title: 'Exercice <current()> : <randomElement(["Les propositions subordonnées", "L''accord du participe passé", "La concordance des temps"])>'
+        description: <text(200)>
+        difficulty: <numberBetween(1, 3)>
+        chapter: '@chapter_french_2'
+        createdAt: <dateTimeBetween('-6 months', 'now')>
+
+    # Exercices de Français - Chapitre 3 (Dissertation)
+    exercise_french_3_{1..3}:
+        title: 'Exercice <current()> : <randomElement(["La problématique", "Le plan dialectique", "L''argumentation"])>'
+        description: <text(200)>
+        difficulty: <numberBetween(1, 3)>
+        chapter: '@chapter_french_3'
+        createdAt: <dateTimeBetween('-6 months', 'now')>
+
+    # Exercices de Français - Chapitre 4 (Analyse littéraire)
+    exercise_french_4_{1..3}:
+        title: 'Exercice <current()> : <randomElement(["Les figures de style", "L''analyse poétique", "Le commentaire composé"])>'
+        description: <text(200)>
+        difficulty: <numberBetween(1, 3)>
+        chapter: '@chapter_french_4'
+        createdAt: <dateTimeBetween('-6 months', 'now')>

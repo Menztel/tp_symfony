@@ -1,0 +1,89 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Modifier {{ subject.name }}{% endblock %}
+
+{% block body %}
+<div class="relative min-h-screen overflow-hidden bg-slate-50/50">
+    <!-- Fond décoratif -->
+    <div class="absolute inset-0 z-0">
+        <div class="absolute top-0 -right-96 w-[800px] h-[800px] bg-gradient-to-bl from-blue-50 to-indigo-100/50 rounded-full blur-3xl"></div>
+        <div class="absolute -bottom-96 -left-96 w-[800px] h-[800px] bg-gradient-to-tr from-emerald-50 to-teal-100/50 rounded-full blur-3xl"></div>
+    </div>
+
+    <!-- Contenu principal -->
+    <div class="relative z-10">
+        <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+            <!-- En-tête -->
+            <div class="mb-8">
+                <nav class="flex mb-8" aria-label="Breadcrumb">
+                    <ol class="inline-flex items-center space-x-1 md:space-x-3">
+                        <li class="inline-flex items-center">
+                            <a href="{{ path('app_subject_index') }}" class="inline-flex items-center text-sm font-medium text-slate-700 hover:text-slate-900">
+                                <i class="fas fa-book mr-2"></i>
+                                Matières
+                            </a>
+                        </li>
+                        <li>
+                            <div class="flex items-center">
+                                <i class="fas fa-chevron-right text-slate-400 mx-2 text-sm"></i>
+                                <a href="{{ path('app_subject_show', {'id': subject.id}) }}" class="text-sm font-medium text-slate-700 hover:text-slate-900">{{ subject.name }}</a>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="flex items-center">
+                                <i class="fas fa-chevron-right text-slate-400 mx-2 text-sm"></i>
+                                <span class="text-sm font-medium text-slate-500">Modifier</span>
+                            </div>
+                        </li>
+                    </ol>
+                </nav>
+
+                <h2 class="text-3xl font-bold leading-7 text-slate-900 sm:truncate sm:tracking-tight mb-1">
+                    Modifier {{ subject.name }}
+                </h2>
+            </div>
+
+            <!-- Formulaire -->
+            <div class="bg-white shadow-sm ring-1 ring-slate-700/5 rounded-xl">
+                <div class="px-4 py-5 sm:p-6">
+                    {{ form_start(form, {'attr': {'class': 'space-y-6'}}) }}
+                        <div>
+                            {{ form_label(form.name, 'Nom de la matière', {'label_attr': {'class': 'block text-sm font-medium text-slate-700'}}) }}
+                            <div class="mt-1">
+                                {{ form_widget(form.name, {'attr': {'class': 'block w-full rounded-md border-slate-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm'}}) }}
+                            </div>
+                            {{ form_errors(form.name, {'attr': {'class': 'text-red-500 text-sm mt-1'}}) }}
+                        </div>
+
+                        <div>
+                            {{ form_label(form.description, 'Description', {'label_attr': {'class': 'block text-sm font-medium text-slate-700'}}) }}
+                            <div class="mt-1">
+                                {{ form_widget(form.description, {'attr': {'class': 'block w-full rounded-md border-slate-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm', 'rows': '4'}}) }}
+                            </div>
+                            {{ form_errors(form.description, {'attr': {'class': 'text-red-500 text-sm mt-1'}}) }}
+                        </div>
+
+                        <div>
+                            {{ form_label(form.teacher, 'Professeur', {'label_attr': {'class': 'block text-sm font-medium text-slate-700'}}) }}
+                            <div class="mt-1">
+                                {{ form_widget(form.teacher, {'attr': {'class': 'block w-full rounded-md border-slate-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm'}}) }}
+                            </div>
+                            {{ form_errors(form.teacher, {'attr': {'class': 'text-red-500 text-sm mt-1'}}) }}
+                        </div>
+
+                        <div class="flex justify-end space-x-3">
+                            <a href="{{ path('app_subject_show', {'id': subject.id}) }}" class="inline-flex items-center px-4 py-2 border border-slate-300 shadow-sm text-sm font-medium rounded-md text-slate-700 bg-white hover:bg-slate-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                                Annuler
+                            </a>
+                            <button type="submit" class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                                <i class="fas fa-save mr-2"></i>
+                                Enregistrer
+                            </button>
+                        </div>
+                    {{ form_end(form) }}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

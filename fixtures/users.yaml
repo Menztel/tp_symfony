@@ -1,0 +1,64 @@
+App\Entity\User:
+    user_admin:
+        email: admin@example.com
+        roles: ['ROLE_ADMIN']
+        password: 'admin123'
+        firstName: Admin
+        lastName: User
+        isVerified: true
+
+    user_teacher_math:
+        email: math.teacher@example.com
+        roles: ['ROLE_TEACHER']
+        password: 'teacher123'
+        firstName: Jean
+        lastName: Euler
+        isVerified: true
+
+    user_teacher_physics:
+        email: physics.teacher@example.com
+        roles: ['ROLE_TEACHER']
+        password: 'teacher123'
+        firstName: Marie
+        lastName: Newton
+        isVerified: true
+
+    user_teacher_chemistry:
+        email: chemistry.teacher@example.com
+        roles: ['ROLE_TEACHER']
+        password: 'teacher123'
+        firstName: Pierre
+        lastName: Lavoisier
+        isVerified: true
+
+    user_teacher_biology:
+        email: biology.teacher@example.com
+        roles: ['ROLE_TEACHER']
+        password: 'teacher123'
+        firstName: Charles
+        lastName: Darwin
+        isVerified: true
+
+    user_teacher_french:
+        email: french.teacher@example.com
+        roles: ['ROLE_TEACHER']
+        password: 'teacher123'
+        firstName: Victor
+        lastName: Hugo
+        isVerified: true
+
+    user_student_{1..10}:
+        email (unique): <safeEmail()>
+        roles: ['ROLE_STUDENT']
+        password: 'student123'
+        firstName: <firstName()>
+        lastName: <lastName()>
+        isVerified: true
+
+    user_banned:
+        email: banned@example.com
+        roles: ['ROLE_BANNED']
+        password: 'banned123'
+        firstName: Banned
+        lastName: User
+        isVerified: true

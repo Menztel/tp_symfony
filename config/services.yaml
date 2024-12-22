@@ -20,5 +20,13 @@ services:
             - '../src/Entity/'
             - '../src/Kernel.php'
 
+    # Explicitly configure the RegistrationController
+    App\Controller\RegistrationController:
+        tags:
+            - { name: 'container.service_subscriber', key: 'form.factory', id: 'form.factory' }
+            - { name: 'controller.service_arguments' }
+        calls:
+            - setContainer: ['@service_container']
+
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones

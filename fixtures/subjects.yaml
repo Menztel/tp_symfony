@@ -1,0 +1,25 @@
+App\Entity\Subject:
+    subject_math:
+        name: 'Mathématiques'
+        description: 'Cours de mathématiques couvrant l''algèbre, la géométrie et l''analyse'
+        teacher: '@user_teacher_math'
+
+    subject_physics:
+        name: 'Physique'
+        description: 'Étude des lois fondamentales de la physique et de la mécanique'
+        teacher: '@user_teacher_physics'
+
+    subject_chemistry:
+        name: 'Chimie'
+        description: 'Introduction à la chimie organique et inorganique'
+        teacher: '@user_teacher_chemistry'
+
+    subject_biology:
+        name: 'Biologie'
+        description: 'Étude des organismes vivants et de leurs interactions'
+        teacher: '@user_teacher_biology'
+
+    subject_french:
+        name: 'Français'
+        description: 'Littérature française et grammaire avancée'
+        teacher: '@user_teacher_french'
